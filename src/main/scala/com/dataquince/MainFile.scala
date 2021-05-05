@@ -1,21 +1,19 @@
 package com.dataquince
 
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{SparkSession,SaveMode}
 
 object MainFile {
   def main(args: Array[String]): Unit = {
-    print("Test line")
 
     val sc = SparkSession
       .builder
-      .appName("HelloSpark")
-      .config("spark.main", "local")
+      .master("local[*]")
+      .appName("Spark main program")
       .getOrCreate()
 
-    println("")
     val sequence = Seq((1, "A"), (2, "B"), (3, "C"))
 
-    val df = spark.createDataFrame(sequence).toDF("col1", "col2")
+    val df = sc.createDataFrame(sequence).toDF("col1", "col2")
     df.show()
 
   }
