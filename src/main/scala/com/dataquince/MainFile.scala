@@ -1,8 +1,10 @@
+package com.dataquince
+
 import org.apache.spark.sql.SparkSession
 
 object MainFile {
   def main(args: Array[String]): Unit = {
-      print("Test line")
+    print("Test line")
 
     val sc = SparkSession
       .builder
@@ -11,9 +13,9 @@ object MainFile {
       .getOrCreate()
 
     println("")
-    val sequence = Seq((1,"A"),(2,"B"),(3,"C"))
+    val sequence = Seq((1, "A"), (2, "B"), (3, "C"))
 
-    val df = spark.createDataFrame(sequence).toDF("col1","col2")
+    val df = spark.createDataFrame(sequence).toDF("col1", "col2")
     df.show()
 
   }
